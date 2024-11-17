@@ -11,13 +11,13 @@ import './bookingHistory.css';
 
 const BookingHistory = () => {
   const { user } = useContext(AuthContext);
-  const { data, loading, error, reFetch } = useFetch(user ? `http://localhost:8800/api/bookings/history?userId=${user._id}` : null);
+  const { data, loading, error, reFetch } = useFetch(user ? `${import.meta.env.PORT}/api/bookings/history?userId=${user._id}` : null);
   const [canceling, setCanceling] = useState(false); 
 
   const handleCancelBooking = async (bookingId) => {
     setCanceling(true);
     try {
-      await axios.put(`http://localhost:8800/api/bookings/cancel/${bookingId}`);
+      await axios.put(`${import.meta.env.PORT}/api/bookings/cancel/${bookingId}`);
       toast.success("Đã hủy đặt phòng thành công!"); 
       reFetch(); 
     } catch (err) {

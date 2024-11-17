@@ -26,7 +26,7 @@ const NewRoom = () => {
   useEffect(() => {
     const fetchAllHotels = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/hotels/all`);
+        const res = await axios.get(`${import.meta.env.PORT}/api/hotels/all`);
         setHotels(res.data); // Lưu danh sách khách sạn vào state
       } catch (err) {
         toast.error("Lỗi khi tải danh sách khách sạn.");
@@ -78,7 +78,7 @@ const NewRoom = () => {
     console.log("Sending room data:", roomDataWithHotelId); // Log dữ liệu trước khi gửi
 
     try {
-      await axios.post(`http://localhost:8800/api/rooms/${selectedHotelId}`, roomDataWithHotelId);
+      await axios.post(`${import.meta.env.PORT}/api/rooms/${selectedHotelId}`, roomDataWithHotelId);
       toast.success("Phòng mới đã được tạo thành công!");
       navigate("/host-hotel"); // Điều hướng về danh sách phòng
     } catch (err) {

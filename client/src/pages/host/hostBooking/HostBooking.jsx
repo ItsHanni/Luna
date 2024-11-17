@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const HostBookings = () => {
   const { user } = useContext(AuthContext);
-  const { data, loading, error, reFetch } = useFetch(`http://localhost:8800/api/bookings`);
+  const { data, loading, error, reFetch } = useFetch(`${import.meta.env.PORT}/api/bookings`);
 
   if (!user) {
     return <p className="no-bookings">Vui lòng đăng nhập để xem danh sách đặt phòng.</p>;
@@ -20,7 +20,7 @@ const HostBookings = () => {
 
   const handleApprove = async (bookingId) => {
     try {
-      await axios.put(`http://localhost:8800/api/bookings/${bookingId}/status`, {
+      await axios.put(`${import.meta.env.PORT}/api/bookings/${bookingId}/status`, {
         status: 'confirmed',
       });
       toast.success("Đơn đặt phòng đã được xác nhận!");
@@ -32,7 +32,7 @@ const HostBookings = () => {
   
   const handleReject = async (bookingId) => {
     try {
-      await axios.put(`http://localhost:8800/api/bookings/${bookingId}/status`, {
+      await axios.put(`${import.meta.env.PORT}/api/bookings/${bookingId}/status`, {
         status: 'rejected',
       });
       toast.success("Đơn đặt phòng đã bị từ chối!");

@@ -47,7 +47,7 @@ const Reserve = ({ setOpen, hotelId }) => {
       console.log("Booking Data:", bookingData); // Kiểm tra dữ liệu
   
       try {
-        const response = await fetch("http://localhost:8800/api/bookings", {
+        const response = await fetch("${import.meta.env.PORT}/api/bookings", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

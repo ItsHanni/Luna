@@ -38,7 +38,7 @@ const Header = ({ type }) => {
   useEffect(() => {
     const fetchCities = async () => {
       try {
-        const response = await fetch("http://localhost:8800/api/hotels/cities");
+        const response = await fetch("${import.meta.env.PORT}/api/hotels/cities");
         const data = await response.json();
         setCities(data); // Set cities to state
       } catch (error) {

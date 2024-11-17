@@ -49,7 +49,7 @@ const Register = () => {
       const imageUrl = response.data.secure_url; // Lấy URL của ảnh đã upload
 
       // Gửi thông tin đăng ký đến server
-      await axios.post("http://localhost:8800/api/auth/register", {
+      await axios.post("${import.meta.env.PORT}/api/auth/register", {
         username,
         email,
         password,

@@ -16,7 +16,7 @@ const List = () => {
     const fetchHotels = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:8800/api/hotels/all"); // Lấy tất cả khách sạn
+        const res = await axios.get('${import.meta.env.PORT}/api/hotels/all'); // Lấy tất cả khách sạn
         setHotels(res.data);
       } catch (err) {
         setError(true);
@@ -31,7 +31,7 @@ const List = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8800/api/hotels/${id}`);
+      await axios.delete(`${import.meta.env.PORT}/api/hotels/${id}`);
       setHotels(hotels.filter((hotel) => hotel._id !== id));
       toast.success("Khách sạn đã được xóa thành công!");
     } catch (err) {
